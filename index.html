@@ -7,11 +7,11 @@
 
 <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { width:100%; height:100%; background:#000; overflow:hidden; }
+    html, body { width:100%; height:100%; overflow:hidden; background:#000; }
 
-    /* ------------------------------ */
-    /*   FULLSCREEN BACKGROUND LAYER  */
-    /* ------------------------------ */
+    /* ===========================
+       HERO BACKGROUND (static)
+       =========================== */
     #hero-bg {
         position:fixed;
         top:0;
@@ -19,33 +19,53 @@
         width:100vw;
         height:100vh;
         background-image:url("./images/9378.png");
-        background-size:100% 100%;  /* EXACT pixel overlay */
-        background-repeat:no-repeat;
+        background-size:contain;
         background-position:center;
+        background-repeat:no-repeat;
         opacity:0;
         transition:opacity 1.4s ease;
         z-index:1;
     }
 
-    /* ------------------------------ */
-    /*       HERO CHARACTER LAYER     */
-    /* ------------------------------ */
+    /* ===========================
+       HERO CHARACTER (cinematic)
+       =========================== */
     #hero-character {
         position:fixed;
         top:0;
         left:0;
-        width:100vw;       /* exact 1:1 match with bg */
+        width:100vw;
         height:100vh;
-        object-fit:fill;   /* forces perfect pixel overlay */
+        object-fit:fill;
         opacity:0;
-        transition:opacity 1.4s ease;
+        transition:opacity 1.2s ease;
         z-index:2;
         pointer-events:none;
+        animation: cameraDrift 18s ease-in-out infinite alternate;
     }
 
-    /* ------------------------------ */
-    /*       CREST INTRO ELEMENT      */
-    /* ------------------------------ */
+    /* Cinematic drift + zoom */
+    @keyframes cameraDrift {
+        0% {
+            transform: translate(0px, 0px) scale(1.00);
+        }
+        25% {
+            transform: translate(-8px, -4px) scale(1.01);
+        }
+        50% {
+            transform: translate(6px, -12px) scale(1.015);
+        }
+        75% {
+            transform: translate(-5px, 10px) scale(1.01);
+        }
+        100% {
+            transform: translate(4px, 6px) scale(1.02);
+        }
+    }
+
+    /* ===========================
+       INTRO CREST
+       =========================== */
     #intro-crest {
         position:fixed;
         top:50%;
@@ -53,7 +73,7 @@
         width:220px;
         transform:translate(-50%, -50%);
         filter:drop-shadow(0 0 20px #ffda44);
-        z-index:10;
+        z-index:5;
         cursor:pointer;
     }
 
@@ -65,14 +85,13 @@
         color:#fff;
         font-size:1rem;
         letter-spacing:0.2em;
-        text-shadow:0 0 10px #000;
         cursor:pointer;
-        z-index:10;
+        z-index:6;
+        text-shadow:0 0 10px #000;
     }
 
-    /* Heartbeat animation */
+    /* Heartbeat effect */
     .heartbeat { animation:beat 1s ease-in-out infinite; }
-
     @keyframes beat {
         0% { transform:translate(-50%, -50%) scale(1); }
         30% { transform:translate(-50%, -50%) scale(1.22); }
@@ -81,17 +100,15 @@
     }
 
     /* Crest fade */
-    .fade-out {
-        animation:fadeOut .9s forwards;
-    }
+    .fade-out { animation:fadeOut .9s forwards; }
     @keyframes fadeOut {
         from { opacity:1; }
-        to   { opacity:0; }
+        to { opacity:0; }
     }
 
-    /* ------------------------------ */
-    /*       EPÒK ENTER BUTTON        */
-    /* ------------------------------ */
+    /* ===========================
+       ENTER BUTTON
+       =========================== */
     #enter-wrap {
         position:fixed;
         bottom:15px;
@@ -99,18 +116,19 @@
         text-align:center;
         opacity:0;
         transition:opacity 1s ease;
-        z-index:20;
+        z-index:10;
     }
 
     #enter-button {
         width:120px;
         cursor:pointer;
         transition:transform .3s ease;
-        filter:drop-shadow(0 0 12px rgba(0,0,0,.9));
+        filter:drop-shadow(0 0 12px rgba(0,0,0,.8));
     }
 
     #enter-button:hover {
         transform:scale(1.07);
+        filter:drop-shadow(0 0 18px rgba(255,215,0,.9));
     }
 
     #enter-label {
@@ -121,15 +139,16 @@
     }
 
     .enter-visible { opacity:1; }
+
 </style>
 </head>
 
 <body>
 
-<!-- LAYER 1: Background -->
+<!-- Hero background -->
 <div id="hero-bg"></div>
 
-<!-- LAYER 2: Character overlay -->
+<!-- Cinematic hero layer -->
 <img id="hero-character" src="./images/herocharacter.png">
 
 <!-- Crest intro -->
@@ -142,7 +161,7 @@
     <div id="enter-label">ENTER</div>
 </div>
 
-<!-- Heartbeat sound -->
+<!-- Heartbeat audio -->
 <audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
 <script>
@@ -163,8 +182,9 @@ function startSequence() {
     crest.classList.add("heartbeat");
 
     heartbeat.currentTime = 0;
-    heartbeat.play().catch(() => {});
+    heartbeat.play().catch(()=>{});
 
+    // Crest beating for 5 seconds
     setTimeout(() => {
         crest.classList.remove("heartbeat");
         crest.classList.add("fade-out");
@@ -172,10 +192,15 @@ function startSequence() {
         heartbeat.pause();
         heartbeat.currentTime = 0;
 
-        /* fade in background & character */
+        // Fade in background
         heroBG.style.opacity = "1";
-        heroChar.style.opacity = "1";
 
+        // Fade in hero with cinematic drift
+        setTimeout(() => {
+            heroChar.style.opacity = "1";
+        }, 300);
+
+        // Show enter button
         setTimeout(() => {
             enterWrap.classList.add("enter-visible");
         }, 1000);
