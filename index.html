@@ -22,18 +22,28 @@
         z-index:1;
     }
 
-    /* ===== HERO CHARACTER (transparent PNG) ===== */
-    #hero-character {
-        position:fixed;
-        bottom:0;
-        right:0;
-        width:45vw;   /* responsive */
-        max-width:500px;
-        opacity:0;
-        pointer-events:none;
-        z-index:3;
-        transition:opacity 1.6s ease;
-        animation:charDrift 18s ease-in-out infinite alternate;
+    /* ===== HERO CHARACTER (TRUE PIXEL SIZE) ===== */
+#hero-character {
+    position: fixed;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+
+    /* No resizing — use actual PNG resolution */
+    width: auto;
+    height: auto;
+
+    /* Centered by default — we can change it */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: opacity 1.6s ease;
+
+    /* cinematic drift */
+    animation: charDrift 18s ease-in-out infinite alternate;
+}
+
     }
 
     /* cinematic drift motion */
