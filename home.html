@@ -280,6 +280,24 @@
         section { padding:50px 5vw; }
         .pb-preview-inner { flex-direction:column; }
     }
+
+    /* ============= ADDITION: HOME MUSIC LINK (NO DELETIONS) ============= */
+    .home-music-link {
+        margin-top:16px;
+        display:inline-block;
+        font-size:0.8rem;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        text-decoration:none;
+        color:#f3d688;
+        border-bottom:1px solid rgba(243,214,136,0.5);
+        padding-bottom:6px;
+        transition:opacity .2s ease, border-color .2s ease;
+    }
+    .home-music-link:hover {
+        opacity:0.9;
+        border-color:#f3d688;
+    }
 </style>
 </head>
 
@@ -288,10 +306,17 @@
 <!-- TOP NAV -->
 <nav class="top-nav">
     <div></div>
+
+    <!-- UPDATED: QUICK LINKS TO EVERY PAGE (NO REMOVALS ELSEWHERE) -->
     <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movement.html">Movement</a>
+        <a href="patchbaby.html">Patch Baby</a>
         <a href="book.html">The Book</a>
         <a href="store.html">Store</a>
-        <a href="patchbaby.html">Patch Baby</a>
+        <a href="about.html">About</a>
+        <!-- optional music anchor/page link (kept simple) -->
+        <a href="about.html#epok-album">Music</a>
     </div>
 </nav>
 
@@ -302,8 +327,19 @@
     <div class="section-title">EPÒK Movement</div>
     <div class="movement-block">
         <h2>EPÒK IS A NEW ERA</h2>
-        <p>Every era of your life is built on a decision...</p>
-        <p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
+
+        <!-- LOCKED WORD-FOR-WORD MOVEMENT INTRO -->
+        <p>Every era of your life is built on a decision.</p>
+        <p>Sometimes that decision is forced on you.</p>
+        <p>Sometimes you choose it yourself.</p>
+        <p>An EPòK begins the moment you refuse to stay who you were.</p>
+        <p>EPòK is about survival, transformation, and becoming. It’s about rebuilding after loss, standing up after pressure, and choosing growth when quitting would be easier.</p>
+        <p>This is more than clothing. This is more than a story. This is a movement built with Artificial Intelligence and real-world passion.</p>
+
+        <p class="movement-question"><strong>Are you ready to step into your EPòK?</strong></p>
+
+        <!-- ADD: HOME PAGE MUSIC LINK -->
+        <a class="home-music-link" href="about.html#epok-album">FREE EPÒK ALBUM</a>
     </div>
 </section>
 
@@ -313,6 +349,8 @@
     <div class="step-banner-wrapper">
         <div class="step-banner-bg"></div>
         <div class="step-banner-overlay"></div>
+
+        <!-- (kept) existing scroll indicator -->
         <div class="scroll-indicator">
             <span>SCROLL</span><span class="arrow">▼</span>
         </div>
