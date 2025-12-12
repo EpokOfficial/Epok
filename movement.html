@@ -42,7 +42,7 @@ body {
     height:64px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
     padding:0 6vw;
     background:rgba(0,0,0,0.92);
     backdrop-filter:blur(10px);
@@ -81,12 +81,11 @@ body {
     color:#f5f2e8;
 }
 
-/* === EDITORIAL INLINE ART (REFERENCE-ACCURATE) === */
-.manifesto img.inline-art {
-    float: right;
-    margin: 0 0 32px 56px; /* natural editorial gutter */
-    height: auto;          /* original image size */
-    filter: drop-shadow(0 45px 100px rgba(0,0,0,0.95));
+/* === EDITORIAL INLINE ART — SCREENSHOT MATCH === */
+.inline-art {
+    float:right;
+    margin:36px 0 32px 56px; /* aligns with first body line */
+    height:auto;             /* ORIGINAL IMAGE SIZE */
 }
 
 /* TEXT */
@@ -119,47 +118,9 @@ body {
     color:#dedad0;
 }
 
-/* ================= ALBUM ================= */
-.album-section {
-    max-width:950px;
-    margin:170px auto 0;
-    text-align:center;
-}
-
-.album-section h3 {
-    font-size:1.6rem;
-    letter-spacing:0.26em;
-    text-transform:uppercase;
-    margin-bottom:32px;
-    color:#f3d688;
-}
-
-.album-cover {
-    max-width:340px;
-    margin:0 auto 34px;
-}
-
-.album-cover img {
-    width:100%;
-    border-radius:18px;
-    box-shadow:0 32px 80px rgba(0,0,0,0.95);
-}
-
-.album-download {
-    display:inline-block;
-    margin-top:14px;
-    font-size:0.85rem;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:#f3d688;
-    text-decoration:none;
-    border-bottom:1px solid rgba(243,214,136,0.6);
-    padding-bottom:6px;
-}
-
 /* ================= RESPONSIVE ================= */
 @media (max-width:1000px) {
-    .manifesto img.inline-art {
+    .inline-art {
         float:none;
         margin:40px 0;
     }
@@ -170,7 +131,6 @@ body {
 <body>
 
 <nav class="top-nav">
-    <div></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="movement.html">Movement</a>
@@ -227,33 +187,6 @@ body {
 
 <p>EPÒK exists at the intersection of human struggle and future technology.</p>
 
-<p><strong>More Than Clothing</strong></p>
-
-<p>The clothing is not the product.</p>
-<p>It’s the uniform.</p>
-
-<p>Each piece represents a chapter of survival, rise, and becoming.</p>
-<p>Each design carries meaning, intention, and story.</p>
-
-<p>You’re not wearing EPÒK to look different.</p>
-<p>You’re wearing it to mark a moment—the moment you chose growth.</p>
-
-<p><strong>The Story Continues</strong></p>
-
-<p>EPÒK is also a story—literally.</p>
-
-<p>The universe expands through the book series Panthers & Vampires, where transformation, identity, power, and survival are explored through characters and worlds that reflect the same themes this movement stands on.</p>
-
-<p>The book is not separate from EPÒK.</p>
-<p>It is part of the same heartbeat.</p>
-
-<p>More stories are coming.</p>
-<p>More worlds are coming.</p>
-<p>More layers of the universe will be revealed over time.</p>
-
-<p>EPÒK is not a single release.</p>
-<p>It’s a long-term evolution.</p>
-
 <p><strong>This Is a Movement</strong></p>
 
 <p>EPÒK is built for people who are rebuilding.</p>
@@ -266,25 +199,6 @@ body {
 <p>This is not about trends.</p>
 <p>This is about timeless growth.</p>
 
-</section>
-
-<section class="philosophy">
-    <h2>SURVIVE. RISE. BECOME.</h2>
-    <p><strong>Survive</strong> — because you made it through what was meant to break you.</p>
-    <p><strong>Rise</strong> — because staying down was never an option forever.</p>
-    <p><strong>Become</strong> — because the best version of you is still unfolding.</p>
-    <p>This is EPÒK.</p>
-    <p>And this is only the beginning.</p>
-</section>
-
-<section class="album-section" id="epok-album">
-    <h3>THE SOUND OF EPÒK</h3>
-    <div class="album-cover">
-        <img src="images/album.png" alt="EPÒK Album Cover">
-    </div>
-    <a class="album-download" href="music/epok-full-album.zip">
-        DOWNLOAD FULL EPÒK ALBUM
-    </a>
 </section>
 
 </div>
