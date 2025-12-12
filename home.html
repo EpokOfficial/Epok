@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,355 +6,262 @@
 <title>EPÒK | Home</title>
 
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:#000;
-        color:#f9f9f9;
-        overflow-x:hidden;
-    }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:#000;
+    color:#f9f9f9;
+    overflow-x:hidden;
+}
 
-    .page-wrap {
-        min-height:100vh;
-        background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
-    }
+.page-wrap {
+    min-height:100vh;
+    background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
+}
 
-    /* ============= GENERAL LAYOUT ============= */
-    section {
-        padding:70px 8vw;
-    }
+/* ================= GLOBAL ================= */
+section { padding:70px 8vw; }
 
-    .section-title {
-        font-size:1.1rem;
-        letter-spacing:0.25em;
-        text-transform:uppercase;
-        color:#c4a86b;
-        margin-bottom:10px;
-    }
+.section-title {
+    font-size:1.1rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:#c4a86b;
+    margin-bottom:12px;
+}
 
-    /* ============= 1. EPÒK MOVEMENT INTRO ============= */
-    .movement-block {
-        max-width:900px;
-        margin:0 auto;
-        border-radius:18px;
-        padding:32px 24px;
-        background:linear-gradient(135deg, rgba(196,168,107,0.12), rgba(47,93,140,0.14));
-        border:1px solid rgba(196,168,107,0.35);
-        box-shadow:0 18px 40px rgba(0,0,0,0.65);
-    }
+/* ================= 1️⃣ EPÒK MOVEMENT ================= */
+.movement-block {
+    max-width:900px;
+    margin:0 auto;
+    border-radius:18px;
+    padding:32px 24px;
+    background:linear-gradient(135deg, rgba(196,168,107,0.12), rgba(47,93,140,0.14));
+    border:1px solid rgba(196,168,107,0.35);
+    box-shadow:0 18px 40px rgba(0,0,0,0.65);
+}
 
-    .movement-block h2 {
-        font-size:1.9rem;
-        margin-bottom:18px;
-        letter-spacing:0.08em;
-        text-transform:uppercase;
-        color:#f4f1e6;
-    }
+.movement-block h2 {
+    font-size:1.9rem;
+    margin-bottom:18px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#f4f1e6;
+}
 
-    .movement-block p {
-        line-height:1.6;
-        font-size:0.98rem;
-        color:#e3e1da;
-        margin-bottom:14px;
-    }
+.movement-block p {
+    line-height:1.6;
+    font-size:0.98rem;
+    color:#e3e1da;
+    margin-bottom:14px;
+}
 
-    .movement-block p strong {
-        color:#f9d17c;
-        font-weight:600;
-    }
+.movement-block p strong {
+    color:#f9d17c;
+}
 
-    .movement-question {
-        margin-top:18px;
-        font-size:1.05rem;
-        letter-spacing:0.03em;
-    }
+.movement-question {
+    margin-top:18px;
+    font-size:1.05rem;
+}
 
-    /* ============= 2. STEP INTO YOUR EPÒK BANNER ============= */
-    .step-banner-section {
-        padding-top:30px;
-        padding-bottom:40px;
-    }
+/* ================= 2️⃣ STEP INTO YOUR EPÒK BANNER ================= */
+.step-banner-section { padding-top:30px; }
 
-    .step-banner-wrapper {
-        position:relative;
-        max-width:1100px;
-        height:65vh;
-        margin:0 auto;
-        border-radius:22px;
-        overflow:hidden;
-        box-shadow:0 20px 60px rgba(0,0,0,0.85);
-        background:#000;
-    }
+.step-banner-wrapper {
+    position:relative;
+    max-width:1100px;
+    height:65vh;
+    margin:0 auto;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.85);
+}
 
-    /* 🔻 PLACE YOUR BANNER ART HERE 🔻 */
-    .step-banner-bg {
-        position:absolute;
-        inset:0;
-        background-image:url("./images/step_epok_banner.png"); /* <— YOUR BANNER ART */
-        background-size:cover;
-        background-position:center;
-        opacity:0;
-        animation:bannerFade 1.8s ease-out forwards;
-    }
+/* 🔒 LOCKED BANNER ART */
+.step-banner-bg {
+    position:absolute;
+    inset:0;
+    background-image:url("./images/12.png");
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    animation:bannerFade 1.8s ease forwards;
+}
 
-    @keyframes bannerFade {
-        from { opacity:0; transform:scale(1.03); }
-        to   { opacity:1; transform:scale(1); }
-    }
+@keyframes bannerFade {
+    from { opacity:0; transform:scale(1.03); }
+    to { opacity:1; transform:scale(1); }
+}
 
-    .step-banner-overlay {
-        position:absolute;
-        inset:0;
-        background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.0) 100%);
-    }
+.step-banner-overlay {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.1));
+}
 
-    .step-banner-text {
-        position:absolute;
-        left:8%;
-        bottom:10%;
-        max-width:420px;
-    }
+.step-banner-text {
+    position:absolute;
+    left:8%;
+    bottom:10%;
+    max-width:420px;
+}
 
-    .step-banner-text h3 {
-        font-size:1.6rem;
-        letter-spacing:0.18em;
-        text-transform:uppercase;
-        color:#f7f2e6;
-        margin-bottom:10px;
-    }
+.step-banner-text h3 {
+    font-size:1.6rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
 
-    .step-banner-text p {
-        font-size:0.96rem;
-        line-height:1.5;
-        color:#ddd7c4;
-    }
+.step-banner-text p {
+    font-size:0.96rem;
+    line-height:1.5;
+    color:#ddd7c4;
+}
 
-    /* Scroll indicator */
-    .scroll-indicator {
-        position:absolute;
-        bottom:14px;
-        left:50%;
-        transform:translateX(-50%);
-        font-size:0.8rem;
-        letter-spacing:0.3em;
-        text-transform:uppercase;
-        color:#b8b5a5;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:3px;
-    }
+.scroll-indicator {
+    position:absolute;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.8rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:#b8b5a5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
 
-    .scroll-indicator span.arrow {
-        font-size:1.2rem;
-        animation:scrollBounce 1.2s ease-in-out infinite;
-    }
+.scroll-indicator .arrow {
+    font-size:1.2rem;
+    animation:bounce 1.2s infinite;
+}
 
-    @keyframes scrollBounce {
-        0% { transform:translateY(0); opacity:0.5; }
-        50% { transform:translateY(4px); opacity:1; }
-        100% { transform:translateY(0); opacity:0.5; }
-    }
+@keyframes bounce {
+    0%,100% { transform:translateY(0); opacity:.6; }
+    50% { transform:translateY(5px); opacity:1; }
+}
 
-    /* ============= 3. PATCH BABY WORLD PREVIEW BUTTON ============= */
-    .pb-preview-section {
-        padding-top:30px;
-        padding-bottom:80px;
-    }
+/* ================= 3️⃣ PATCH BABY PREVIEW ================= */
+.pb-preview-inner {
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
 
-    .pb-preview-inner {
-        max-width:900px;
-        margin:0 auto;
-        display:flex;
-        align-items:center;
-        gap:22px;
-        flex-wrap:wrap;
-        justify-content:space-between;
-    }
+.pb-text-block { flex:1 1 260px; }
 
-    .pb-text-block {
-        flex:1 1 260px;
-    }
+.pb-text-block h3 {
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#f3d688;
+    margin-bottom:10px;
+}
 
-    .pb-text-block h3 {
-        font-size:1.1rem;
-        letter-spacing:0.2em;
-        text-transform:uppercase;
-        color:#f3d688;
-        margin-bottom:10px;
-    }
+.pb-text-block p {
+    font-size:0.95rem;
+    line-height:1.5;
+    color:#dedad0;
+}
 
-    .pb-text-block p {
-        font-size:0.95rem;
-        line-height:1.5;
-        color:#dedad0;
-    }
+.pb-cta-wrap {
+    flex:0 0 260px;
+    text-align:center;
+}
 
-    .pb-cta-wrap {
-        flex:0 0 260px;
-        text-align:center;
-    }
+/* 🔒 LOCKED PATCH BABY BUTTON */
+.pb-preview-button {
+    display:inline-block;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(246,228,150,0.7);
+    padding:10px;
+    transition:.25s ease;
+}
 
-    /* 🔻 PATCH BABY PREVIEW ART BUTTON 🔻 */
-    .pb-preview-button {
-        display:inline-block;
-        border-radius:18px;
-        overflow:hidden;
-        border:1px solid rgba(246,228,150,0.7);
-        background:radial-gradient(circle at top, #1b1b25 0%, #050509 60%);
-        padding:10px;
-        cursor:pointer;
-        transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
+.pb-preview-button img {
+    width:100%;
+    max-width:230px;
+}
 
-    .pb-preview-button img {
-        display:block;
-        width:100%;
-        max-width:230px;
-        height:auto;
-    }
+.pb-preview-button:hover {
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:0 12px 30px rgba(0,0,0,0.8);
+}
 
-    .pb-preview-button:hover {
-        transform:translateY(-4px) scale(1.02);
-        box-shadow:0 12px 30px rgba(0,0,0,0.8);
-        border-color:#f6e496;
-    }
+.pb-preview-label {
+    margin-top:8px;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+}
 
-    .pb-preview-label {
-        margin-top:8px;
-        font-size:0.8rem;
-        letter-spacing:0.18em;
-        text-transform:uppercase;
-        color:#f3eddc;
-    }
+.pb-preview-note {
+    font-size:0.78rem;
+    color:#bab6a8;
+}
 
-    .pb-preview-note {
-        margin-top:4px;
-        font-size:0.78rem;
-        color:#bab6a8;
-    }
-
-    .pb-preview-button:active {
-        transform:translateY(-1px) scale(0.99);
-    }
-
-    /* ============= RESPONSIVE TWEAKS ============= */
-    @media (max-width:900px) {
-        section { padding:60px 6vw; }
-
-        .step-banner-wrapper {
-            height:55vh;
-        }
-
-        .step-banner-text {
-            left:7%;
-            bottom:11%;
-            max-width:70%;
-        }
-
-        .step-banner-text h3 {
-            font-size:1.35rem;
-        }
-    }
-
-    @media (max-width:600px) {
-        section { padding:50px 5vw; }
-
-        .movement-block {
-            padding:22px 18px;
-        }
-
-        .movement-block h2 {
-            font-size:1.5rem;
-        }
-
-        .step-banner-wrapper {
-            height:52vh;
-        }
-
-        .step-banner-text {
-            left:6%;
-            bottom:12%;
-            max-width:80%;
-        }
-
-        .pb-preview-inner {
-            flex-direction:column;
-            align-items:flex-start;
-        }
-
-        .pb-cta-wrap {
-            align-self:center;
-        }
-    }
+/* ================= MOBILE ================= */
+@media (max-width:600px) {
+    section { padding:50px 5vw; }
+    .step-banner-wrapper { height:52vh; }
+    .pb-preview-inner { flex-direction:column; }
+}
 </style>
 </head>
+
 <body>
 <div class="page-wrap">
 
-    <!-- 1️⃣ EPÒK Movement Intro Section -->
-    <section id="movement">
-        <div class="section-title">EPÒK Movement</div>
-        <div class="movement-block">
-            <h2>EPÒK IS A NEW ERA</h2>
+<!-- 1️⃣ EPÒK MOVEMENT -->
+<section>
+<div class="section-title">EPÒK Movement</div>
+<div class="movement-block">
+<h2>EPÒK IS A NEW ERA</h2>
+<p>Every era of your life is built on a decision...</p>
+<p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
+</div>
+</section>
 
-            <p>Every era of your life is built on a decision. Sometimes that decision is forced on you. Sometimes you step into it on your own. Either way — an <strong>EPÒK</strong> begins the moment you refuse to remain stagnated.</p>
+<!-- 2️⃣ BANNER -->
+<section class="step-banner-section">
+<div class="section-title">Step Into Your EPÒK</div>
+<div class="step-banner-wrapper">
+<div class="step-banner-bg"></div>
+<div class="step-banner-overlay"></div>
+<div class="step-banner-text">
+<h3>STEP INTO YOUR EPÒK</h3>
+<p>This isn’t just merch. It’s a marker of transformation.</p>
+</div>
+<div class="scroll-indicator">
+<span>SCROLL</span>
+<span class="arrow">▼</span>
+</div>
+</div>
+</section>
 
-            <p><strong>Panthers &amp; Vampires: Blue Moon</strong> isn’t just a story — it’s a reflection of real life, people being forced into stepping in their New Eras. It’s about pain, pressure, identity, growth, and the courage to rise again after losing everything.</p>
-
-            <p>King steps into his EPÒK. Xzatalia steps into hers. Even the monsters, even the chosen, even the broken — everyone has a moment where they transform.</p>
-
-            <p>And so do you.</p>
-
-            <p><strong>EPÒK</strong> is a movement of hope that was created from nothing. It’s for anyone who’s trying to become the version of themselves they were always meant to be. This book, this brand, this universe — all of it came from rebuilding a life from ground zero, surpassing near death experiences. Overcoming grief and pain, choosing to rise instead of quit.</p>
-
-            <p class="movement-question">If you’re reading this, you’re already standing in front of your next era. The only question left is:</p>
-            <p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
-        </div>
-    </section>
-
-    <!-- 2️⃣ "Step Into Your EPÒK" Banner Section -->
-    <section id="step-epok" class="step-banner-section">
-        <div class="section-title">Step Into Your EPÒK</div>
-
-        <div class="step-banner-wrapper">
-            <!-- 🔻 YOUR FULL BANNER BACKGROUND IMAGE 🔻 -->
-            <div class="step-banner-bg"></div>
-
-            <div class="step-banner-overlay"></div>
-
-            <div class="step-banner-text">
-                <h3>STEP INTO YOUR EPÒK</h3>
-                <p>This isn’t just merch. It’s a marker of the moment you chose not to stay the same. The Patch, the Panthers, the Vampires — it all starts here.</p>
-            </div>
-
-            <div class="scroll-indicator">
-                <span>SCROLL</span>
-                <span class="arrow">▼</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3️⃣ Patch Baby World Preview Button -->
-    <section id="patchbaby-preview" class="pb-preview-section">
-        <div class="pb-preview-inner">
-            <div class="pb-text-block">
-                <h3>PATCH BABY WORLD</h3>
-                <p>A signature part of EPÒK — the Patch Babies are the heart of the neighborhood, the kids of the Patch block, and the energy behind the first drop.</p>
-                <p>When you’re ready, you can enter the Patch Baby world, see the characters, and explore the exclusive fits they’re modeling for the launch.</p>
-            </div>
-
-            <div class="pb-cta-wrap">
-                <!-- 🔻 CLICKABLE PATCH BABY PREVIEW BUTTON 🔻 -->
-                <a href="patchbaby.html" class="pb-preview-button">
-                    <img src="./images/PB_Teaser_Signature.png" alt="Patch Baby teaser">
-                </a>
-                <div class="pb-preview-label">ENTER PATCH BABY WORLD</div>
-                <div class="pb-preview-note">(Click the image to continue)</div>
-            </div>
-        </div>
-    </section>
+<!-- 3️⃣ PATCH BABY PREVIEW -->
+<section>
+<div class="pb-preview-inner">
+<div class="pb-text-block">
+<h3>PATCH BABY WORLD</h3>
+<p>The heart of the Patch.</p>
+</div>
+<div class="pb-cta-wrap">
+<a href="patchbaby.html" class="pb-preview-button">
+<img src="./images/14.png" alt="Patch Baby World">
+</a>
+<div class="pb-preview-label">ENTER PATCH BABY WORLD</div>
+<div class="pb-preview-note">(Click to continue)</div>
+</div>
+</div>
+</section>
 
 </div>
 </body>
