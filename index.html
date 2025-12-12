@@ -7,166 +7,6 @@
 
 <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body, html { width:100%; height:100%; background:#000; overflow:hidden; }
-
-    /* ===== HERO BACKGROUND ===== */
-    #hero-bg {
-        position:fixed;
-        inset:0;
-        background-image:url("./images/9378.png");
-        background-size:contain;
-        background-position:center;
-        background-repeat:no-repeat;
-        opacity:0;
-        transition:opacity 1.4s ease;
-        z-index:1;
-    }
-
-    /* ===== INTRO CREST ===== */
-    #intro-crest {
-        position:fixed;
-        top:50%;
-        left:50%;
-        width:220px;
-        transform:translate(-50%, -50%);
-        filter:drop-shadow(0 0 20px #ffda44);
-        z-index:5;
-        cursor:pointer;
-    }
-
-    #click-here {
-        position:fixed;
-        top:calc(50% + 150px);
-        left:50%;
-        transform:translateX(-50%);
-        color:#fff;
-        font-size:1rem;
-        letter-spacing:0.2em;
-        text-shadow:0 0 10px #000;
-        cursor:pointer;
-        z-index:5;
-    }
-
-    /* Heartbeat effect */
-    .heartbeat { animation:beat 1s ease-in-out infinite; }
-    @keyframes beat {
-        0% { transform:translate(-50%, -50%) scale(1); }
-        30% { transform:translate(-50%, -50%) scale(1.22); }
-        60% { transform:translate(-50%, -50%) scale(1.05); }
-        100% { transform:translate(-50%, -50%) scale(1); }
-    }
-
-    /* Fade out crest */
-    .fade-out { animation:fadeOut .9s forwards; }
-    @keyframes fadeOut {
-        from { opacity:1; }
-        to { opacity:0; }
-    }
-
-    /* ===== ENTER BUTTON ===== */
-    #enter-wrap {
-        position:fixed;
-        bottom:15px;
-        right:15px;
-        text-align:center;
-        opacity:0;
-        transition:opacity 1s ease;
-        z-index:6;
-    }
-
-    #enter-button {
-        width:120px;
-        cursor:pointer;
-        transition:transform .3s ease;
-        filter:drop-shadow(0 0 12px rgba(0,0,0,.8));
-    }
-
-    #enter-button:hover { transform:scale(1.07); }
-
-    #enter-label {
-        color:#fff;
-        font-size:.75rem;
-        letter-spacing:.25em;
-        margin-top:3px;
-    }
-
-    .enter-visible { opacity:1; }
-</style>
-</head>
-
-<body>
-
-<!-- ===== HERO BACKGROUND ===== -->
-<div id="hero-bg"></div>
-
-<!-- ===== CREST ENTRY ===== -->
-<img id="intro-crest" src="./images/crest1.png">
-<div id="click-here">CLICK HERE</div>
-
-<!-- ===== ENTER BUTTON ===== -->
-<div id="enter-wrap">
-    <img id="enter-button" src="./images/8187.png">
-    <div id="enter-label">ENTER</div>
-</div>
-
-<!-- ===== AUDIO ===== -->
-<audio id="heartbeat-audio" src="./music/Heartbeat.mp3">
-
-<script>
-const crest = document.getElementById("intro-crest");
-const clickHere = document.getElementById("click-here");
-const heroBG = document.getElementById("hero-bg");
-const enterWrap = document.getElementById("enter-wrap");
-const heartbeat = document.getElementById("heartbeat-audio");
-
-let started = false;
-
-function startSequence() {
-    if (started) return;
-    started = true;
-
-    clickHere.style.display = "none";
-    crest.classList.add("heartbeat");
-
-    heartbeat.currentTime = 0;
-    heartbeat.play().catch(()=>{});
-
-    setTimeout(() => {
-        crest.classList.remove("heartbeat");
-        crest.classList.add("fade-out");
-
-        heartbeat.pause();
-        heartbeat.currentTime = 0;
-
-        heroBG.style.opacity = "1";
-
-        setTimeout(() => {
-            enterWrap.classList.add("enter-visible");
-        }, 1000);
-
-    }, 5000);
-}
-
-crest.addEventListener("click", startSequence);
-clickHere.addEventListener("click", startSequence);
-
-document.getElementById("enter-button").addEventListener("click", () => {
-    window.location.href = "index.html";
-});
-</script>
-
-</body>
-</html>
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EPÒK | Enter Your Era</title>
-
-<style>
-    * { margin:0; padding:0; box-sizing:border-box; }
     html, body { width:100%; height:100%; background:#000; overflow:hidden; }
 
     /* ------------------------------ */
@@ -179,7 +19,7 @@ document.getElementById("enter-button").addEventListener("click", () => {
         width:100vw;
         height:100vh;
         background-image:url("./images/9378.png");
-        background-size:100% 100%;  /* EXACT pixel overlay */
+        background-size:100% 100%; /* exact pixel match */
         background-repeat:no-repeat;
         background-position:center;
         opacity:0;
@@ -188,19 +28,28 @@ document.getElementById("enter-button").addEventListener("click", () => {
     }
 
     /* ------------------------------ */
-    /*       HERO CHARACTER LAYER     */
+    /*   HERO CHARACTER (MOVES ONLY)  */
     /* ------------------------------ */
     #hero-character {
         position:fixed;
         top:0;
         left:0;
-        width:100vw;       /* exact 1:1 match with bg */
-        height:100vh;
-        object-fit:fill;   /* forces perfect pixel overlay */
+        width:100vw; 
+        height:100vh; 
+        object-fit:fill; 
         opacity:0;
         transition:opacity 1.4s ease;
         z-index:2;
         pointer-events:none;
+
+        /* Camera drift animation */
+        animation:cameraMove 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes cameraMove {
+        0%   { transform:translate(0px, 0px) scale(1.00); }
+        50%  { transform:translate(-12px, -8px) scale(1.03); }
+        100% { transform:translate(10px, 6px) scale(1.01); }
     }
 
     /* ------------------------------ */
@@ -241,9 +90,7 @@ document.getElementById("enter-button").addEventListener("click", () => {
     }
 
     /* Crest fade */
-    .fade-out {
-        animation:fadeOut .9s forwards;
-    }
+    .fade-out { animation:fadeOut .9s forwards; }
     @keyframes fadeOut {
         from { opacity:1; }
         to   { opacity:0; }
@@ -269,9 +116,7 @@ document.getElementById("enter-button").addEventListener("click", () => {
         filter:drop-shadow(0 0 12px rgba(0,0,0,.9));
     }
 
-    #enter-button:hover {
-        transform:scale(1.07);
-    }
+    #enter-button:hover { transform:scale(1.07); }
 
     #enter-label {
         color:#fff;
@@ -286,23 +131,23 @@ document.getElementById("enter-button").addEventListener("click", () => {
 
 <body>
 
-<!-- LAYER 1: Background -->
+<!-- BACKGROUND -->
 <div id="hero-bg"></div>
 
-<!-- LAYER 2: Character overlay -->
+<!-- CHARACTER -->
 <img id="hero-character" src="./images/herocharacter.png">
 
-<!-- Crest intro -->
+<!-- CENTER CREST -->
 <img id="intro-crest" src="./images/crest1.png">
 <div id="click-here">CLICK HERE</div>
 
-<!-- Enter button -->
+<!-- ENTER BUTTON -->
 <div id="enter-wrap">
     <img id="enter-button" src="./images/8187.png">
     <div id="enter-label">ENTER</div>
 </div>
 
-<!-- Heartbeat sound -->
+<!-- AUDIO -->
 <audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
 <script>
@@ -323,7 +168,7 @@ function startSequence() {
     crest.classList.add("heartbeat");
 
     heartbeat.currentTime = 0;
-    heartbeat.play().catch(() => {});
+    heartbeat.play().catch(()=>{});
 
     setTimeout(() => {
         crest.classList.remove("heartbeat");
@@ -332,7 +177,6 @@ function startSequence() {
         heartbeat.pause();
         heartbeat.currentTime = 0;
 
-        /* fade in background & character */
         heroBG.style.opacity = "1";
         heroChar.style.opacity = "1";
 
