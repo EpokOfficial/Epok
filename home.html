@@ -15,9 +15,44 @@
         overflow-x:hidden;
     }
 
+    /* ============= TOP NAVIGATION ============= */
+    .top-nav {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:64px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 6vw;
+        background:rgba(0,0,0,0.6);
+        backdrop-filter:blur(8px);
+        z-index:1000;
+    }
+
+    .nav-links {
+        display:flex;
+        gap:28px;
+    }
+
+    .nav-links a {
+        text-decoration:none;
+        color:#e8e4d8;
+        font-size:0.85rem;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        transition:color .2s ease;
+    }
+
+    .nav-links a:hover {
+        color:#f3d688;
+    }
+
     .page-wrap {
         min-height:100vh;
         background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
+        padding-top:64px; /* offset for fixed nav */
     }
 
     /* ============= GENERAL LAYOUT ============= */
@@ -87,11 +122,11 @@
         background:#000;
     }
 
-    /* 🔻 PLACE YOUR BANNER ART HERE 🔻 */
+    /* 🔻 UPDATED BANNER IMAGE 🔻 */
     .step-banner-bg {
         position:absolute;
         inset:0;
-        background-image:url("./images/step_epok_banner.png"); /* <— YOUR BANNER ART */
+        background-image:url("./images/12.png");
         background-size:cover;
         background-position:center;
         opacity:0;
@@ -196,7 +231,6 @@
         text-align:center;
     }
 
-    /* 🔻 PATCH BABY PREVIEW ART BUTTON 🔻 */
     .pb-preview-button {
         display:inline-block;
         border-radius:18px;
@@ -208,6 +242,7 @@
         transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
 
+    /* 🔻 UPDATED PB PREVIEW IMAGE 🔻 */
     .pb-preview-button img {
         display:block;
         width:100%;
@@ -235,126 +270,70 @@
         color:#bab6a8;
     }
 
-    .pb-preview-button:active {
-        transform:translateY(-1px) scale(0.99);
-    }
-
     /* ============= RESPONSIVE TWEAKS ============= */
     @media (max-width:900px) {
         section { padding:60px 6vw; }
-
-        .step-banner-wrapper {
-            height:55vh;
-        }
-
-        .step-banner-text {
-            left:7%;
-            bottom:11%;
-            max-width:70%;
-        }
-
-        .step-banner-text h3 {
-            font-size:1.35rem;
-        }
+        .step-banner-wrapper { height:55vh; }
     }
 
     @media (max-width:600px) {
         section { padding:50px 5vw; }
-
-        .movement-block {
-            padding:22px 18px;
-        }
-
-        .movement-block h2 {
-            font-size:1.5rem;
-        }
-
-        .step-banner-wrapper {
-            height:52vh;
-        }
-
-        .step-banner-text {
-            left:6%;
-            bottom:12%;
-            max-width:80%;
-        }
-
-        .pb-preview-inner {
-            flex-direction:column;
-            align-items:flex-start;
-        }
-
-        .pb-cta-wrap {
-            align-self:center;
-        }
+        .pb-preview-inner { flex-direction:column; }
     }
 </style>
 </head>
+
 <body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+    <div></div>
+    <div class="nav-links">
+        <a href="book.html">The Book</a>
+        <a href="store.html">Store</a>
+        <a href="patchbaby.html">Patch Baby</a>
+    </div>
+</nav>
+
 <div class="page-wrap">
 
-    <!-- 1️⃣ EPÒK Movement Intro Section -->
-    <section id="movement">
-        <div class="section-title">EPÒK Movement</div>
-        <div class="movement-block">
-            <h2>EPÒK IS A NEW ERA</h2>
+<!-- EPÒK Movement -->
+<section id="movement">
+    <div class="section-title">EPÒK Movement</div>
+    <div class="movement-block">
+        <h2>EPÒK IS A NEW ERA</h2>
+        <p>Every era of your life is built on a decision...</p>
+        <p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
+    </div>
+</section>
 
-            <p>Every era of your life is built on a decision. Sometimes that decision is forced on you. Sometimes you step into it on your own. Either way — an <strong>EPÒK</strong> begins the moment you refuse to remain stagnated.</p>
-
-            <p><strong>Panthers &amp; Vampires: Blue Moon</strong> isn’t just a story — it’s a reflection of real life, people being forced into stepping in their New Eras. It’s about pain, pressure, identity, growth, and the courage to rise again after losing everything.</p>
-
-            <p>King steps into his EPÒK. Xzatalia steps into hers. Even the monsters, even the chosen, even the broken — everyone has a moment where they transform.</p>
-
-            <p>And so do you.</p>
-
-            <p><strong>EPÒK</strong> is a movement of hope that was created from nothing. It’s for anyone who’s trying to become the version of themselves they were always meant to be. This book, this brand, this universe — all of it came from rebuilding a life from ground zero, surpassing near death experiences. Overcoming grief and pain, choosing to rise instead of quit.</p>
-
-            <p class="movement-question">If you’re reading this, you’re already standing in front of your next era. The only question left is:</p>
-            <p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
+<!-- STEP INTO EPÒK -->
+<section class="step-banner-section">
+    <div class="section-title">Step Into Your EPÒK</div>
+    <div class="step-banner-wrapper">
+        <div class="step-banner-bg"></div>
+        <div class="step-banner-overlay"></div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span><span class="arrow">▼</span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 2️⃣ "Step Into Your EPÒK" Banner Section -->
-    <section id="step-epok" class="step-banner-section">
-        <div class="section-title">Step Into Your EPÒK</div>
-
-        <div class="step-banner-wrapper">
-            <!-- 🔻 YOUR FULL BANNER BACKGROUND IMAGE 🔻 -->
-            <div class="step-banner-bg"></div>
-
-            <div class="step-banner-overlay"></div>
-
-            <div class="step-banner-text">
-                <h3>STEP INTO YOUR EPÒK</h3>
-                <p>This isn’t just merch. It’s a marker of the moment you chose not to stay the same. The Patch, the Panthers, the Vampires — it all starts here.</p>
-            </div>
-
-            <div class="scroll-indicator">
-                <span>SCROLL</span>
-                <span class="arrow">▼</span>
-            </div>
+<!-- PATCH BABY PREVIEW -->
+<section class="pb-preview-section">
+    <div class="pb-preview-inner">
+        <div class="pb-text-block">
+            <h3>PATCH BABY WORLD</h3>
+            <p>Enter the Patch Baby universe.</p>
         </div>
-    </section>
-
-    <!-- 3️⃣ Patch Baby World Preview Button -->
-    <section id="patchbaby-preview" class="pb-preview-section">
-        <div class="pb-preview-inner">
-            <div class="pb-text-block">
-                <h3>PATCH BABY WORLD</h3>
-                <p>A signature part of EPÒK — the Patch Babies are the heart of the neighborhood, the kids of the Patch block, and the energy behind the first drop.</p>
-                <p>When you’re ready, you can enter the Patch Baby world, see the characters, and explore the exclusive fits they’re modeling for the launch.</p>
-            </div>
-
-            <div class="pb-cta-wrap">
-                <!-- 🔻 CLICKABLE PATCH BABY PREVIEW BUTTON 🔻 -->
-                <a href="patchbaby.html" class="pb-preview-button">
-                    <img src="./images/PB_Teaser_Signature.png" alt="Patch Baby teaser">
-                </a>
-                <div class="pb-preview-label">ENTER PATCH BABY WORLD</div>
-                <div class="pb-preview-note">(Click the image to continue)</div>
-            </div>
+        <div class="pb-cta-wrap">
+            <a href="patchbaby.html" class="pb-preview-button">
+                <img src="./images/14.png" alt="Patch Baby Preview">
+            </a>
+            <div class="pb-preview-label">ENTER PATCH BABY WORLD</div>
         </div>
-    </section>
+    </div>
+</section>
 
 </div>
 </body>
