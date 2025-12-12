@@ -171,7 +171,7 @@
     <div id="enter-label">ENTER HERE</div>
 </div>
 
-<!-- AUDIO -->
+<!-- HEARTBEAT AUDIO -->
 <audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
 <script>
@@ -199,7 +199,6 @@ function startSequence() {
         crest.classList.add("fade-out");
 
         heartbeat.pause();
-        heartbeat.currentTime = 0;
 
         heroBG.style.opacity = "1";
         heroChar.style.opacity = "1";
@@ -218,6 +217,3 @@ document.getElementById("enter-button").addEventListener("click", () => {
     window.location.href = "index.html";
 });
 </script>
-
-</body>
-</html>
