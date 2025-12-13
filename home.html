@@ -6,14 +6,14 @@
 <title>EPÒK | Home</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background:#000;
-    color:#f9f9f9;
-    overflow-x:hidden;
-}
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:#000;
+        color:#f9f9f9;
+        overflow-x:hidden;
+    }
 
 /* ============ DOUBLE ROYAL FRAME (FULL PAGE) ============ */
 .page-frame-outer {
@@ -22,7 +22,7 @@ body {
     background:#000;
     border:2px solid rgba(212,175,55,0.65);
     position:relative;
-    overflow:hidden;
+    overflow:hidden; /* CLIPS BORDER TEXT */
 }
 
 /* LEFT & RIGHT VERTICAL INSCRIPTION */
@@ -40,12 +40,12 @@ body {
     color:#ffffff;
     pointer-events:none;
     white-space:nowrap;
-    overflow:hidden;
+    overflow:hidden; /* PREVENTS LEAKING */
 }
 
-/* LEFT SIDE */
+/* LEFT SIDE — PERFECTLY CENTERED + SLOWER */
 .page-frame-outer::before {
-    left:1px;
+    left:1px; /* TRUE CENTER OF BORDER CHANNEL */
     animation:leftScroll 45s linear infinite;
 }
 
@@ -54,9 +54,9 @@ body {
     to   { transform:translateY(-100%); }
 }
 
-/* RIGHT SIDE */
+/* RIGHT SIDE — PERFECTLY CENTERED + SLOWER */
 .page-frame-outer::after {
-    right:9px;
+    right:9px; /* TRUE CENTER OF BORDER CHANNEL */
     animation:rightScroll 45s linear infinite;
 }
 
@@ -91,109 +91,305 @@ body {
     to { transform:translateX(-100%); }
 }
 
-/* ============= TOP NAVIGATION ============= */
-.top-nav {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:64px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 6vw;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(8px);
-    z-index:1000;
-}
+    /* ============= TOP NAVIGATION ============= */
+    .top-nav {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:64px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 6vw;
+        background:rgba(0,0,0,0.6);
+        backdrop-filter:blur(8px);
+        z-index:1000;
+    }
 
-.nav-links {
-    display:flex;
-    gap:28px;
-}
+    .nav-links {
+        display:flex;
+        gap:28px;
+    }
 
-.nav-links a {
-    text-decoration:none;
-    color:#e8e4d8;
-    font-size:0.85rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    transition:color .2s ease;
-}
+    .nav-links a {
+        text-decoration:none;
+        color:#e8e4d8;
+        font-size:0.85rem;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        transition:color .2s ease;
+    }
 
-.nav-links a:hover {
-    color:#f3d688;
-}
+    .nav-links a:hover {
+        color:#f3d688;
+    }
 
-.page-wrap {
-    min-height:100vh;
-    background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
-    padding-top:64px;
-}
+    .page-wrap {
+        min-height:100vh;
+        background:radial-gradient(circle at top, #1a1a22 0%, #050509 55%, #000 100%);
+        padding-top:64px; /* offset for fixed nav */
+    }
 
-/* ============= GENERAL LAYOUT ============= */
-section {
-    padding:70px 8vw;
-}
+    /* ============= GENERAL LAYOUT ============= */
+    section {
+        padding:70px 8vw;
+    }
 
-.section-title {
-    font-size:1.1rem;
-    letter-spacing:0.25em;
-    text-transform:uppercase;
-    color:#c4a86b;
-    margin-bottom:10px;
-}
+    .section-title {
+        font-size:1.1rem;
+        letter-spacing:0.25em;
+        text-transform:uppercase;
+        color:#c4a86b;
+        margin-bottom:10px;
+    }
 
-/* ============= MOVEMENT BLOCK ============= */
-.movement-block {
-    max-width:900px;
-    margin:0 auto;
-    border-radius:18px;
-    padding:32px 24px;
-    background:linear-gradient(135deg, rgba(196,168,107,0.12), rgba(47,93,140,0.14));
-    border:1px solid rgba(196,168,107,0.35);
-    box-shadow:0 18px 40px rgba(0,0,0,0.65);
-}
+    /* ============= 1. EPÒK MOVEMENT INTRO ============= */
+    .movement-block {
+        max-width:900px;
+        margin:0 auto;
+        border-radius:18px;
+        padding:32px 24px;
+        background:linear-gradient(135deg, rgba(196,168,107,0.12), rgba(47,93,140,0.14));
+        border:1px solid rgba(196,168,107,0.35);
+        box-shadow:0 18px 40px rgba(0,0,0,0.65);
+    }
 
-.movement-block h2 {
-    font-size:1.9rem;
-    margin-bottom:18px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:#f4f1e6;
-}
+    .movement-block h2 {
+        font-size:1.9rem;
+        margin-bottom:18px;
+        letter-spacing:0.08em;
+        text-transform:uppercase;
+        color:#f4f1e6;
+    }
 
-.movement-block p {
-    line-height:1.6;
-    font-size:0.98rem;
-    color:#e3e1da;
-    margin-bottom:14px;
-}
+    .movement-block p {
+        line-height:1.6;
+        font-size:0.98rem;
+        color:#e3e1da;
+        margin-bottom:14px;
+    }
 
-.movement-question {
-    margin-top:18px;
-    font-size:1.05rem;
-    letter-spacing:0.03em;
-}
+    .movement-block p strong {
+        color:#f9d17c;
+        font-weight:600;
+    }
 
-.home-music-link {
-    margin-top:16px;
-    display:inline-block;
-    font-size:0.8rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    text-decoration:none;
-    color:#f3d688;
-    border-bottom:1px solid rgba(243,214,136,0.5);
-    padding-bottom:6px;
-}
+    .movement-question {
+        margin-top:18px;
+        font-size:1.05rem;
+        letter-spacing:0.03em;
+    }
+
+    /* ============= 2. STEP INTO YOUR EPÒK BANNER ============= */
+    .step-banner-section {
+        padding-top:30px;
+        padding-bottom:40px;
+    }
+
+    .step-banner-wrapper {
+        position:relative;
+        max-width:1100px;
+        height:65vh;
+        margin:0 auto;
+        border-radius:22px;
+        overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,0.85);
+        background:#000;
+    }
+
+    /* 🔻 UPDATED BANNER IMAGE 🔻 */
+    .step-banner-bg {
+        position:absolute;
+        inset:0;
+        background-image:url("./images/12.png");
+        background-size:cover;
+        background-position:center;
+        opacity:0;
+        animation:bannerFade 1.8s ease-out forwards;
+    }
+
+    @keyframes bannerFade {
+        from { opacity:0; transform:scale(1.03); }
+        to   { opacity:1; transform:scale(1); }
+    }
+
+    .step-banner-overlay {
+        position:absolute;
+        inset:0;
+        background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.0) 100%);
+    }
+
+    .step-banner-text {
+        position:absolute;
+        left:8%;
+        bottom:10%;
+        max-width:420px;
+    }
+
+    .step-banner-text h3 {
+        font-size:1.6rem;
+        letter-spacing:0.18em;
+        text-transform:uppercase;
+        color:#f7f2e6;
+        margin-bottom:10px;
+    }
+
+    .step-banner-text p {
+        font-size:0.96rem;
+        line-height:1.5;
+        color:#ddd7c4;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        position:absolute;
+        bottom:14px;
+        left:50%;
+        transform:translateX(-50%);
+        font-size:0.8rem;
+        letter-spacing:0.3em;
+        text-transform:uppercase;
+        color:#b8b5a5;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:3px;
+    }
+
+    .scroll-indicator span.arrow {
+        font-size:1.2rem;
+        animation:scrollBounce 1.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+        0% { transform:translateY(0); opacity:0.5; }
+        50% { transform:translateY(4px); opacity:1; }
+        100% { transform:translateY(0); opacity:0.5; }
+    }
+
+    /* ============= 3. PATCH BABY WORLD PREVIEW BUTTON ============= */
+    .pb-preview-section {
+        padding-top:30px;
+        padding-bottom:80px;
+    }
+
+    .pb-preview-inner {
+        max-width:900px;
+        margin:0 auto;
+        display:flex;
+        align-items:center;
+        gap:22px;
+        flex-wrap:wrap;
+        justify-content:space-between;
+    }
+
+    .pb-text-block {
+        flex:1 1 260px;
+    }
+
+    .pb-text-block h3 {
+        font-size:1.1rem;
+        letter-spacing:0.2em;
+        text-transform:uppercase;
+        color:#f3d688;
+        margin-bottom:10px;
+    }
+
+    .pb-text-block p {
+        font-size:0.95rem;
+        line-height:1.5;
+        color:#dedad0;
+    }
+
+    .pb-cta-wrap {
+        flex:0 0 260px;
+        text-align:center;
+    }
+
+    .pb-preview-button {
+        display:inline-block;
+        border-radius:18px;
+        overflow:hidden;
+        border:1px solid rgba(246,228,150,0.7);
+        background:radial-gradient(circle at top, #1b1b25 0%, #050509 60%);
+        padding:10px;
+        cursor:pointer;
+        transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    /* 🔻 UPDATED PB PREVIEW IMAGE 🔻 */
+    .pb-preview-button img {
+        display:block;
+        width:100%;
+        max-width:230px;
+        height:auto;
+    }
+
+    .pb-preview-button:hover {
+        transform:translateY(-4px) scale(1.02);
+        box-shadow:0 12px 30px rgba(0,0,0,0.8);
+        border-color:#f6e496;
+    }
+
+    .pb-preview-label {
+        margin-top:8px;
+        font-size:0.8rem;
+        letter-spacing:0.18em;
+        text-transform:uppercase;
+        color:#f3eddc;
+    }
+
+    .pb-preview-note {
+        margin-top:4px;
+        font-size:0.78rem;
+        color:#bab6a8;
+    }
+
+    /* ============= RESPONSIVE TWEAKS ============= */
+    @media (max-width:900px) {
+        section { padding:60px 6vw; }
+        .step-banner-wrapper { height:55vh; }
+    }
+
+    @media (max-width:600px) {
+        section { padding:50px 5vw; }
+        .pb-preview-inner { flex-direction:column; }
+    }
+
+    /* ============= ADDITION: HOME MUSIC LINK (NO DELETIONS) ============= */
+    .home-music-link {
+        margin-top:16px;
+        display:inline-block;
+        font-size:0.8rem;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        text-decoration:none;
+        color:#f3d688;
+        border-bottom:1px solid rgba(243,214,136,0.5);
+        padding-bottom:6px;
+        transition:opacity .2s ease, border-color .2s ease;
+    }
+    .home-music-link:hover {
+        opacity:0.9;
+        border-color:#f3d688;
+    }
 </style>
 </head>
 
 <body>
 
+<div class="page-frame-outer">
+
+    <div class="arabic-border">
+        <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • </span>
+    </div>
+
+<!-- TOP NAV -->
 <nav class="top-nav">
     <div></div>
+
+    <!-- UPDATED: QUICK LINKS TO EVERY PAGE (NO REMOVALS ELSEWHERE) -->
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="movement.html">Movement</a>
@@ -201,42 +397,67 @@ section {
         <a href="book.html">The Book</a>
         <a href="store.html">Store</a>
         <a href="about.html">About</a>
+        <!-- optional music anchor/page link (kept simple) -->
         <a href="about.html#epok-album">Music</a>
     </div>
 </nav>
 
-<div class="page-frame-outer">
-
-    <div class="arabic-border">
-        <span>
-            قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك •
-            قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك •
-        </span>
-    </div>
-
 <div class="page-wrap">
 
+<!-- EPÒK Movement -->
 <section id="movement">
     <div class="section-title">EPÒK Movement</div>
     <div class="movement-block">
         <h2>EPÒK IS A NEW ERA</h2>
 
+        <!-- LOCKED WORD-FOR-WORD MOVEMENT INTRO -->
         <p>Every era of your life is built on a decision.</p>
         <p>Sometimes that decision is forced on you.</p>
         <p>Sometimes you choose it yourself.</p>
-        <p>An EPÒK begins the moment you refuse to stay who you were.</p>
-        <p>EPÒK is about survival, transformation, and becoming. It’s about rebuilding after loss, standing up after pressure, and choosing growth when quitting would be easier.</p>
+        <p>An EPòK begins the moment you refuse to stay who you were.</p>
+        <p>EPòK is about survival, transformation, and becoming. It’s about rebuilding after loss, standing up after pressure, and choosing growth when quitting would be easier.</p>
         <p>This is more than clothing. This is more than a story. This is a movement built with Artificial Intelligence and real-world passion.</p>
 
-        <p class="movement-question"><strong>Are you ready to step into your EPÒK?</strong></p>
+        <p class="movement-question"><strong>Are you ready to step into your EPòK?</strong></p>
 
+        <!-- ADD: HOME PAGE MUSIC LINK -->
         <a class="home-music-link" href="about.html#epok-album">FREE EPÒK ALBUM</a>
     </div>
 </section>
 
+<!-- STEP INTO EPÒK -->
+<section class="step-banner-section">
+    <div class="section-title">Step Into Your EPÒK</div>
+    <div class="step-banner-wrapper">
+        <div class="step-banner-bg"></div>
+        <div class="step-banner-overlay"></div>
+
+        <!-- (kept) existing scroll indicator -->
+        <div class="scroll-indicator">
+            <span>SCROLL</span><span class="arrow">▼</span>
+        </div>
+    </div>
+</section>
+
+<!-- PATCH BABY PREVIEW -->
+<section class="pb-preview-section">
+    <div class="pb-preview-inner">
+        <div class="pb-text-block">
+            <h3>PATCH BABY WORLD</h3>
+            <p>Enter the Patch Baby universe.</p>
+        </div>
+        <div class="pb-cta-wrap">
+            <a href="patchbaby.html" class="pb-preview-button">
+                <img src="./images/14.png" alt="Patch Baby Preview">
+            </a>
+            <div class="pb-preview-label">ENTER PATCH BABY WORLD</div>
+        </div>
+    </div>
+</section>
+
 </div>
+
 </div>
 
 </body>
 </html>
-
