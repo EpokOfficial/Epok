@@ -28,7 +28,7 @@ html, body {
 
 .page-frame-outer::before,
 .page-frame-outer::after {
-    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
+    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
     position:absolute;
     top:22px;
     bottom:22px;
@@ -60,7 +60,6 @@ html, body {
     to { transform:translateY(100%); }
 }
 
-/* Bottom Arabic */
 .arabic-border {
     position:absolute;
     bottom:6px;
@@ -85,6 +84,54 @@ html, body {
     to { transform:translateX(-100%); }
 }
 
+/* ============ TOP NAV (ADDED + MOBILE SCROLL) ============ */
+.top-nav {
+    position:fixed;
+    top:22px;
+    left:22px;
+    right:22px;
+    z-index:40;
+    pointer-events:auto;
+}
+
+.nav-scroll {
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;
+    padding:10px 12px;
+}
+
+.nav-scroll::-webkit-scrollbar { height:0px; }
+.nav-scroll { scrollbar-width:none; }
+
+.nav-list {
+    display:inline-flex;
+    gap:18px;
+    align-items:center;
+    flex-wrap:nowrap;
+}
+
+.nav-list a {
+    display:inline-block;
+    color:#ffffff;
+    text-decoration:none;
+    font-size:0.75rem;
+    letter-spacing:0.28em;
+    opacity:0.78;
+    transition:opacity .25s ease;
+    padding:6px 4px;
+}
+
+.nav-list a:hover { opacity:1; }
+
+.nav-list a.featured {
+    opacity:1;
+    border:1px solid rgba(212,175,55,0.85);
+    padding:7px 10px;
+}
+
 /* ============ WORLD STAGE ============ */
 .world-stage {
     position:fixed;
@@ -93,7 +140,7 @@ html, body {
     overflow:hidden;
 }
 
-/* INTERACTIVE WRAP (THIS IS WHAT SCALES) */
+/* INTERACTIVE WRAP (SCALES) */
 .world-interactive {
     position:absolute;
     inset:0;
@@ -101,7 +148,6 @@ html, body {
     will-change:transform;
 }
 
-/* BASE + OVERLAY */
 .world-base,
 .world-overlay {
     position:absolute;
@@ -112,14 +158,12 @@ html, body {
     pointer-events:none;
 }
 
-/* HOVER SCALE (DESKTOP) */
 @media (hover:hover) {
     .world-interactive:hover {
         transform:scale(1.06);
     }
 }
 
-/* TAP SCALE (MOBILE) */
 .world-interactive.active {
     transform:scale(1.06);
 }
@@ -131,6 +175,7 @@ html, body {
     width:100%;
     text-align:center;
     z-index:10;
+    pointer-events:auto;
 }
 
 .world-nav span {
@@ -142,11 +187,9 @@ html, body {
     transition:opacity .3s ease;
 }
 
-.world-nav span:hover {
-    opacity:1;
-}
+.world-nav span:hover { opacity:1; }
 
-/* FADE TRANSITION */
+/* FADE */
 .fade-out {
     animation:fadeOut 1.2s forwards;
 }
@@ -158,6 +201,22 @@ html, body {
 </head>
 
 <body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+    <div class="nav-scroll">
+        <div class="nav-list">
+            <a href="index.html">HOME</a>
+            <a href="movement.html">MOVEMENT</a>
+            <a href="patchbaby.html">PATCH BABY</a>
+            <a href="book.html">BOOK</a>
+            <a href="store.html">STORE</a>
+            <a href="about.html">ABOUT</a>
+            <a href="music.html">MUSIC</a>
+            <a class="featured" href="signature-apparel-premiere.html">SIGNATURE APPAREL PREMIERE</a>
+        </div>
+    </div>
+</div>
 
 <div class="page-frame-outer">
     <div class="arabic-border">
@@ -186,12 +245,10 @@ const stage = document.getElementById("worldStage");
 const toBoy = document.getElementById("toBoy");
 const interactive = document.getElementById("interactiveWorld");
 
-/* MOBILE TAP TO SCALE */
 interactive.addEventListener("click", () => {
     interactive.classList.toggle("active");
 });
 
-/* NAVIGATION */
 toBoy.addEventListener("click", () => {
     stage.classList.add("fade-out");
     setTimeout(() => {
@@ -199,6 +256,10 @@ toBoy.addEventListener("click", () => {
     }, 1200);
 });
 </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
