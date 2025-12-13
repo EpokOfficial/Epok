@@ -22,9 +22,10 @@ body {
     background:#000;
     border:2px solid rgba(212,175,55,0.65);
     position:relative;
+    overflow:hidden; /* CLIPS BORDER TEXT */
 }
 
-/* LEFT & RIGHT VERTICAL INSCRIPTION (SCROLLING) */
+/* LEFT & RIGHT VERTICAL INSCRIPTION */
 .page-frame-outer::before,
 .page-frame-outer::after {
     content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
@@ -39,13 +40,13 @@ body {
     color:#ffffff;
     pointer-events:none;
     white-space:nowrap;
-    overflow:hidden;
+    overflow:hidden; /* PREVENTS LEAKING */
 }
 
-/* LEFT SIDE — BOTTOM → TOP */
+/* LEFT SIDE — PERFECTLY CENTERED + SLOWER */
 .page-frame-outer::before {
-    left:6px;
-    animation:leftScroll 28s linear infinite;
+    left:22px; /* CENTER BETWEEN BORDERS */
+    animation:leftScroll 36s linear infinite;
 }
 
 @keyframes leftScroll {
@@ -53,10 +54,10 @@ body {
     to   { transform:translateY(-100%); }
 }
 
-/* RIGHT SIDE — TOP → BOTTOM (CENTERED INSIDE BORDER) */
+/* RIGHT SIDE — PERFECTLY CENTERED + SLOWER */
 .page-frame-outer::after {
-    right:6px;
-    animation:rightScroll 28s linear infinite;
+    right:22px; /* CENTER BETWEEN BORDERS */
+    animation:rightScroll 36s linear infinite;
 }
 
 @keyframes rightScroll {
@@ -258,7 +259,6 @@ body {
 
 <div class="page-frame-outer">
 
-    <!-- ARABIC BOTTOM BORDER -->
     <div class="arabic-border">
         <span>قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك • </span>
     </div>
@@ -305,5 +305,6 @@ body {
 
 </body>
 </html>
+
 
 </html>
