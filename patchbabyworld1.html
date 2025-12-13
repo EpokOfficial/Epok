@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +60,7 @@ html, body {
     to { transform:translateY(100%); }
 }
 
-/* Bottom Arabic text */
+/* Bottom Arabic */
 .arabic-border {
     position:absolute;
     bottom:6px;
@@ -91,8 +90,18 @@ html, body {
     position:fixed;
     inset:0;
     z-index:1;
+    overflow:hidden;
 }
 
+/* INTERACTIVE WRAP (THIS IS WHAT SCALES) */
+.world-interactive {
+    position:absolute;
+    inset:0;
+    transition:transform 0.35s ease;
+    will-change:transform;
+}
+
+/* BASE + OVERLAY */
 .world-base,
 .world-overlay {
     position:absolute;
@@ -100,9 +109,22 @@ html, body {
     width:100%;
     height:100%;
     object-fit:contain;
+    pointer-events:none;
 }
 
-/* IN-WORLD NAV (NO TABS) */
+/* HOVER SCALE (DESKTOP) */
+@media (hover:hover) {
+    .world-interactive:hover {
+        transform:scale(1.06);
+    }
+}
+
+/* TAP SCALE (MOBILE) */
+.world-interactive.active {
+    transform:scale(1.06);
+}
+
+/* IN-WORLD NAV */
 .world-nav {
     position:absolute;
     bottom:12%;
@@ -148,13 +170,11 @@ html, body {
 
 <div class="world-stage" id="worldStage">
 
-    <!-- GIRL WORLD BASE -->
-    <img src="images/23.png" class="world-base" alt="Girl World">
+    <div class="world-interactive" id="interactiveWorld">
+        <img src="images/23.png" class="world-base" alt="Girl World">
+        <img src="images/23n2.png" class="world-overlay" alt="Girl World Logo">
+    </div>
 
-    <!-- GIRL WORLD OVERLAY -->
-    <img src="images/23n2.png" class="world-overlay" alt="Girl World Logo">
-
-    <!-- IN-WORLD NAVIGATION -->
     <div class="world-nav">
         <span id="toBoy">ENTER BOY WORLD →</span>
     </div>
@@ -164,7 +184,14 @@ html, body {
 <script>
 const stage = document.getElementById("worldStage");
 const toBoy = document.getElementById("toBoy");
+const interactive = document.getElementById("interactiveWorld");
 
+/* MOBILE TAP TO SCALE */
+interactive.addEventListener("click", () => {
+    interactive.classList.toggle("active");
+});
+
+/* NAVIGATION */
 toBoy.addEventListener("click", () => {
     stage.classList.add("fade-out");
     setTimeout(() => {
