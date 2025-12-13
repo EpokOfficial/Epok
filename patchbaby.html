@@ -1,1 +1,201 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EPÒK | Patch Baby</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+    width:100%;
+    height:100%;
+    background:#000;
+    overflow:hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ============ DOUBLE ROYAL FRAME (LOCKED) ============ */
+.page-frame-outer {
+    position:fixed;
+    inset:0;
+    padding:22px;
+    border:2px solid rgba(212,175,55,0.65);
+    pointer-events:none;
+    z-index:50;
+}
+
+.page-frame-outer::before,
+.page-frame-outer::after {
+    content:"SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • SURVIVE • RISE • BECOME • STEP INTO YOUR EPÒK • ";
+    position:absolute;
+    top:22px;
+    bottom:22px;
+    width:22px;
+    writing-mode:vertical-rl;
+    font-size:0.65rem;
+    letter-spacing:0.35em;
+    color:#ffffff;
+    white-space:nowrap;
+}
+
+.page-frame-outer::before {
+    left:1px;
+    animation:leftScroll 45s linear infinite;
+}
+
+.page-frame-outer::after {
+    right:9px;
+    animation:rightScroll 45s linear infinite;
+}
+
+@keyframes leftScroll {
+    from { transform:translateY(100%); }
+    to { transform:translateY(-100%); }
+}
+
+@keyframes rightScroll {
+    from { transform:translateY(-100%); }
+    to { transform:translateY(100%); }
+}
+
+.arabic-border {
+    position:absolute;
+    bottom:6px;
+    left:0;
+    right:0;
+    font-size:0.7rem;
+    letter-spacing:0.45em;
+    color:#ffffff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-align:center;
+}
+
+.arabic-border span {
+    display:inline-block;
+    padding-left:100%;
+    animation:arabic-scroll 18s linear infinite;
+}
+
+@keyframes arabic-scroll {
+    from { transform:translateX(0); }
+    to { transform:translateX(-100%); }
+}
+
+/* ============ INTRO LAYER ============ */
+.intro-stage {
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+/* BASE ART */
+#enter-base {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* LOGO OVERLAY */
+#enter-logo {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    opacity:0;
+}
+
+/* HEARTBEAT PULSE */
+.pulse {
+    animation:pulseBeat 1s ease-in-out infinite;
+}
+
+@keyframes pulseBeat {
+    0% { transform:scale(1); }
+    30% { transform:scale(1.15); }
+    60% { transform:scale(1.03); }
+    100% { transform:scale(1); }
+}
+
+/* ENTER TEXT */
+#enter-text {
+    position:absolute;
+    bottom:14%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.85rem;
+    letter-spacing:0.35em;
+    color:#ffffff;
+    opacity:0;
+    cursor:pointer;
+}
+
+/* FADE OUT */
+.fade-out {
+    animation:fadeOut 1.2s forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="intro-stage">
+    <img id="enter-base" src="./images/Enter1.png" alt="">
+    <img id="enter-logo" src="./images/Enter2.png" alt="">
+    <div id="enter-text">ENTER HERE</div>
+</div>
+
+<audio id="heartbeat" src="./music/Heartbeat.mp3"></audio>
+
+<div class="page-frame-outer">
+    <div class="arabic-border">
+        <span>
+            قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك •
+            قَ على قيد الحياة. انهض. كن. ادخل إلى عالم إيبوك الخاص بك •
+        </span>
+    </div>
+</div>
+
+<script>
+const logo = document.getElementById("enter-logo");
+const text = document.getElementById("enter-text");
+const audio = document.getElementById("heartbeat");
+const stage = document.querySelector(".intro-stage");
+
+audio.volume = 0.9;
+audio.play().catch(()=>{});
+
+setTimeout(() => {
+    logo.style.opacity = "1";
+    logo.classList.add("pulse");
+}, 200);
+
+setTimeout(() => {
+    text.style.opacity = "1";
+}, 6000);
+
+text.addEventListener("click", () => {
+    stage.classList.add("fade-out");
+    audio.pause();
+    setTimeout(() => {
+        // NEXT WORLD PAGE WILL LOAD HERE
+        // window.location.href = "patchbaby-world-boy.html";
+    }, 1200);
+});
+</script>
+
+</body>
+</html>
