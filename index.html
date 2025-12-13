@@ -77,6 +77,62 @@ html, body { width:100%; height:100%; background:#000; overflow:hidden; }
     to { transform:translateX(-100%); }
 }
 
+/* ================= TOP NAV (ADDED) ================= */
+.top-nav {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:64px;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid rgba(212,175,55,0.25);
+}
+
+.nav-scroll {
+    width:100%;
+    height:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    padding:0 6vw;
+    display:flex;
+    align-items:center;
+}
+
+.nav-scroll::-webkit-scrollbar { height:0px; }
+.nav-scroll { scrollbar-width:none; }
+
+.nav-links {
+    display:inline-flex;
+    gap:26px;
+    align-items:center;
+}
+
+.nav-links a {
+    text-decoration:none;
+    color:#e8e4d8;
+    font-size:0.82rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    padding:8px 4px;
+    opacity:0.85;
+}
+
+.nav-links a:hover {
+    color:#f3d688;
+    opacity:1;
+}
+
+.nav-links a.featured {
+    opacity:1;
+    border:1px solid rgba(212,175,55,0.85);
+    padding:8px 12px;
+    color:#f3d688;
+}
+
 /* BACKGROUND */
 #hero-bg {
     position:fixed;
@@ -148,17 +204,6 @@ html, body { width:100%; height:100%; background:#000; overflow:hidden; }
     to { opacity:0; }
 }
 
-/* ENTER */
-#enter-wrap {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    z-index:20;
-}
-
-#enter-button { width:130px; cursor:pointer; }
-#enter-label { color:#fff; letter-spacing:.25em; text-align:center; }
-
 /* ================= MOBILE OPTIMIZATION ONLY ================= */
 @media (max-width:768px) {
 
@@ -170,15 +215,6 @@ html, body { width:100%; height:100%; background:#000; overflow:hidden; }
         top:calc(50% + 120px);
         font-size:0.85rem;
         letter-spacing:0.18em;
-    }
-
-    #enter-button {
-        width:95px;
-    }
-
-    #enter-wrap {
-        bottom:14px;
-        right:14px;
     }
 
     .page-frame-outer {
@@ -195,22 +231,39 @@ html, body { width:100%; height:100%; background:#000; overflow:hidden; }
         font-size:0.6rem;
         letter-spacing:0.3em;
     }
+
+    /* ALLOW FULL IMAGE VISIBILITY FOR images/12.png */
+    img[src*="12.png"] {
+        object-fit:contain !important;
+        width:100%;
+        height:auto;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<nav class="top-nav">
+    <div class="nav-scroll">
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="movement.html">Movement</a>
+            <a href="patchbaby.html">Patch Baby</a>
+            <a href="book.html">The Book</a>
+            <a href="store.html">Store</a>
+            <a href="checkout.html">Checkout</a>
+            <a href="about.html">About</a>
+            <a class="featured" href="signature-apparel-premiere.html">Signature Apparel Premiere</a>
+        </div>
+    </div>
+</nav>
+
 <div id="hero-bg"></div>
 <img id="hero-character" src="./images/herocharacter.png">
 
 <img id="intro-crest" src="./images/crest1.png">
 <div id="click-here">CLICK HERE</div>
-
-<div id="enter-wrap">
-    <img id="enter-button" src="./images/8187.png">
-    <div id="enter-label">ENTER HERE</div>
-</div>
 
 <audio id="heartbeat-audio" src="./music/Heartbeat.mp3"></audio>
 
@@ -228,6 +281,7 @@ const heroChar = document.getElementById("hero-character");
 const heartbeat = document.getElementById("heartbeat-audio");
 
 let started = false;
+let readyToEnter = false;
 
 function startSequence() {
     if (started) return;
@@ -248,15 +302,18 @@ function startSequence() {
 
         heroBG.style.opacity = "1";
         heroChar.style.opacity = "1";
+        readyToEnter = true;
     }, 5000);
 }
 
 crest.addEventListener("click", startSequence);
 clickHere.addEventListener("click", startSequence);
 
-document.getElementById("enter-button").onclick = () => {
+/* CLICK ANYWHERE TO ENTER AFTER SEQUENCE */
+document.addEventListener("click", () => {
+    if (!readyToEnter) return;
     window.location.href = "home.html";
-};
+});
 </script>
 
 </body>
